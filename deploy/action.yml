@@ -1,0 +1,14 @@
+name: 'Deploy Vapor'
+description: 'Deploys a Vapor app to Vapor Cloud'
+inputs:
+  env:
+    description: 'Environment to deploy to'
+    required: true
+    default: 'staging'
+runs:
+  using: 'docker'
+  image: 'docker://vapor/toolbox:18'
+  args:
+    - cloud
+    - --help
+    - ${{ inputs.env }
