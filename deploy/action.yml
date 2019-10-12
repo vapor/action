@@ -11,4 +11,4 @@ runs:
   args:
     - cloud
     - --help
-    - ${{ inputs.env }
+    - ${{ inputs.env }}
