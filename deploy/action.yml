@@ -1,14 +1,24 @@
 name: 'Deploy Vapor'
 description: 'Deploys a Vapor app to Vapor Cloud'
 inputs:
-  env:
-    description: 'Environment to deploy to'
+  app:
+    description: 'Application to deploy'
     required: true
-    default: 'staging'
+  env:
+    description: 'Environment to deploy'
+    required: true
+  branch:
+    description: 'Branch to deploy'
+    required: true
 runs:
   using: 'docker'
   image: 'docker://vapor/toolbox:18'
   args:
     - cloud
-    - --help
-    # - ${{ inputs.env }}
+    - deploy
+    - --app
+    - ${{ inputs.app }}
+    - --env
+    - ${{ inputs.env }}
+    - --branch
+    - ${{ inputs.branch }}
