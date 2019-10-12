@@ -4,8 +4,13 @@ inputs:
   version:
     description: 'Swift version to test'
     required: true
+  os:
+    description: 'OS to test on'
+    required: true
 runs:
   using: 'docker'
-  image: 'docker://vapor/swift:${{ inputs.version }}'
+  image: 'Dockerfile'
+  env:
+    TAG: ${{ inputs.version }}-${{ inputs.os }}
   args:
     - test
